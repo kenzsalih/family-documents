@@ -1,0 +1,44 @@
+{
+  "name": "family-documents",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "db:migrate": "node scripts/migrate.mjs",
+    "hash-password": "node scripts/hash-password.mjs",
+    "test:auth": "node scripts/test-auth.mjs && node scripts/test-e2e-auth.mjs",
+    "test:members": "node scripts/test-members.mjs",
+    "test:documents": "node scripts/test-documents.mjs",
+    "test:security": "node scripts/test-milestone5-security.mjs",
+    "test:storage": "node scripts/test-storage-supabase.mjs",
+    "test": "npm run test:auth && npm run test:members && npm run test:documents && npm run test:security && npm run test:storage",
+    "test:neon": "node scripts/test-e2e-neon-live.mjs",
+    "verify:live": "node scripts/verify-live-services.mjs"
+  },
+  "dependencies": {
+    "@neon/config": "^1.9.4",
+    "@neon/env": "^1.6.5",
+    "@neondatabase/serverless": "^1.2.0",
+    "@supabase/supabase-js": "^2.118.0",
+    "bcryptjs": "^3.0.3",
+    "jose": "^6.2.13",
+    "lucide-react": "^1.61.0",
+    "next": "16.4.3",
+    "pg": "^8.23.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.3",
+    "typescript": "^5"
+  }
+}
