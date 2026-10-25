@@ -25,11 +25,14 @@ function getSessionSecret(): Uint8Array {
  * Verifies the user-submitted password against the bcrypt hash in environment variables.
  */
 export async function verifyPassword(password: string): Promise<boolean> {
-  const hash = process.env.FAMILY_PASSWORD_HASH;
+  let hash = process.env.FAMILY_PASSWORD_HASH;
   if (!hash) {
     console.error('FAMILY_PASSWORD_HASH environment variable is not configured.');
     return false;
   }
+
+  // Normalize hash: strip outer quotes and backslashes if pasted from .env files into Vercel UI
+  hash = hash.trim().replace(/^["']|["']$/g, '').replace(/\\(?=\$)/g, '');
 
   try {
     return await bcrypt.compare(password, hash);
